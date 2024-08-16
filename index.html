@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Enana Apestosa<3</title>
+  <!-- Agrega la hoja de estilo de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="icon" href="enupi.jpg" type="image/jpg">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: auto; /* Permite el desplazamiento */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #bcc7cb;
+      position: relative; /* Necesario para el posicionamiento absoluto del fondo */
+    }
+
+    .background-grid {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100vh; /* Ocupa toda la altura de la pantalla */
+      width: 100vw; /* Ocupa todo el ancho de la pantalla */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Coloca el fondo detrás del contenido */
+    }
+
+    .background-grid .grid-item {
+      flex: 1 0 50%; /* Ocupa el 50% del ancho de la pantalla */
+      height: 50%; /* Ocupa la mitad de la altura de la pantalla */
+    }
+
+    .background-grid .grid-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Asegura que la imagen cubra todo el área sin deformarse */
+    }
+
+    .regalo {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1; /* Asegura que el contenido esté sobre el fondo */
+      text-align: center; /* Centra el texto dentro del regalo */
+    }
+
+    .regalo img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .card-body {
+      text-align: center;
+    }
+
+    .pagina2 a {
+      color: white;
+      background-color: black;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .pagina2 {
+      position: absolute;
+      bottom: 2px;
+      left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo de imágenes -->
+  <div class="background-grid">
+    <div class="grid-item">
+      <img src="tuenti1.jpg" alt="Foto 1" class="grid-img">
+    </div>
+    <div class="grid-item">
+      <img src="tuenti2.jpg" alt="Foto 2" class="grid-img">
+    </div>
+    <div class="grid-item">
+      <img src="tuenti3.png" alt="Foto 3" class="grid-img">
+    </div>
+    <div class="grid-item">
+      <img src="tuenti4.jpg" alt="Foto 4" class="grid-img">
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <p class="pagina2"><a href="yo.html">hehe</a></p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Div para el regalo -->
+        <div class="regalo" onclick="toggleRegalo()">
+          <!-- Imagen del regalo cerrado -->
+          <img src="regalocerrado1.png" alt="Regalo cerrado" height="400px" width="200" id="regalo">
+          <!-- Imagen del regalo abierto -->
+          <img src="regaloabierto1.png" alt="Regalo abierto" width="200" id="regaloAb" style="display: none;">
+        </div>
+        <!-- Elemento de audio oculto -->
+        <audio id="audio" controls style="display: none;">
+          <source src="felizcumple.mp3" type="audio/mp3">
+        </audio>
+        <!-- Elemento de audio que se reproduce automáticamente -->
+        <audio id="autoplayAudio" src="bili.m4a" type="audio/m4a" autoplay></audio>
+        <!-- Div para el contenido del regalo -->
+        <div class="card mt-3 mb-3" id="contenido" style="display: none;">
+          <div class="card-body">
+            <h5 class="card-title">¡Feliz cumple bonita!</h5>
+            <p class="card-text">Espero que hoy estes pasando un hermoso dia porque sos una personita muy linda que se merece lo mejor, gracias por llegar a mi vida y estar para mi preciosa. No quiero escribir mucho porque soy pesimo haciendolo, pero si quiero decirte que estoy muy feliz de haberte encontrado porque me alegras el corazon siempre, te hiciste un lugar muy grande en el y si no estas solo quedaria un vacio, uno que no puede llenarse sin vos. TE QUIEROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO MILIIIIIIIIIIIIIIIIIIIII.</p>
+            <p class="card-text">ATTE YO</p>
+            <img src="giftosito.gif" class="img-fluid" width="200">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agrega los scripts de Bootstrap y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Agrega tu propio script JS -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
+  <script>
+    var autoplayAudio = document.getElementById("autoplayAudio");
+    var audio = document.getElementById("audio");
+
+    function onClick() {
+      confetti({
+        particleCount: 150,
+        spread: 60
+      });
+    }
+
+    function toggleRegalo() {
+      var regalo = document.getElementById("regalo");
+      var regaloAb = document.getElementById("regaloAb");
+      var contenido = document.getElementById("contenido");
+
+      if (regalo.style.display === "none") {
+        // Si el regalo está abierto, cerrarlo
+        regalo.style.display = "block";
+        regaloAb.style.display = "none";
+        contenido.style.display = "none";
+        audio.pause(); // Detener el audio de cumpleaños
+        audio.currentTime = 0;
+        autoplayAudio.play(); // Reanudar el audio automático
+      } else {
+        // Si el regalo está cerrado, abrirlo
+        regalo.style.display = "none";
+        regaloAb.style.display = "block";
+        contenido.style.display = "block";
+        autoplayAudio.pause(); // Detener el audio automático
+        autoplayAudio.currentTime = 0;
+        audio.play(); // Reproducir el audio de cumpleaños
+        onClick(); // Ejecutar el efecto de confeti
+      }
+    }
+  </script>
+</body>
+</html>

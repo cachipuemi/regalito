@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yo</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container-foto {
+            text-align: center; /* Centrar el texto e imagen */
+        }
+        .container-foto img {
+            max-width: 60%; /* Ajusta el tamaño de la imagen */
+            height: auto; /* Mantener la proporción de la imagen */
+        }
+        .container-foto p {
+            font-size: 2rem; /* Ajustar el tamaño del texto */
+            color: black;
+        }
+        .full-page {
+            height: 100vh; /* Altura completa de la ventana del navegador */
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            position: relative; /* Necesario para el posicionamiento absoluto del botón */
+        }
+        .btn-return {
+            position: absolute;
+            bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+            right: 20px;  /* Ajusta la distancia desde la parte derecha */
+            background-color: #3336ff; /* Cambia el color de fondo del botón */
+            color: #fff; /* Cambia el color del texto del botón */
+        }
+        .btn-return:hover {
+            background-color: #c70039; /* Cambia el color de fondo al pasar el ratón */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-page">
+        <div class="container-foto">
+            <img src="enupi2.jpeg" alt="Imagen">
+            <p>que miras bobita :P</p>
+            <audio src="bobita.m4a" type="audio/m4a" autoplay style="display: none;"></audio>
+            <!-- Botón para volver a la página principal -->
+            <a href="index.html" class="btn btn-return">volve tomtita</a>
+        </div>
+    </div>
+</body>
+</html>
